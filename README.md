@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# frontend-task
+Тестовое задание для Frontend-разработчиков
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+Представьте, что вам пришел заказ от очень популярной мини-игры в достаточно 
+большой социальной сети. Название игры - "Гоночки". Суть игры заключается в том,
+что пользователи выполняют заезды стараясь пройти одну и ту же дистанцию за
+максимально короткий промежуток времени. Стоит заметить, что игра присутствует 
+только в мобильном виде, то есть разработана специально для мобильных устройств 
+по размерам, начиная с iPhone 5S и заканчивая iPad Pro. 
 
-In the project directory, you can run:
+Количество пользователей в данный момент превышает 4 миллиона.
 
-### `npm start`
+## Задача
+Ваша задача заключается в том, что в этом приложении необходимо отобразить 
+рейтинговую таблицу с пользователями. Данные брать постранично с https://devapi.almurut.com/api/test/racers/, при подгрузке данных отображать лоадер.
+Поле time сгенерировать вручную.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+В качестве выполненной работы необходимо выложить проект на GitHub Pages и 
+предоставить ссылку для просмотра как проекта так и исходников. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Требования к технологиям
+- React **без использования классовых компонентов**
+- React Hooks
+- Минимальная ширина экрана - 320px. Максимальная 1920px
+- *Желательно использовать JSS, а не CSS. Для этого можно воспользоваться 
+библиотекой [@material-ui/styles](https://www.npmjs.com/package/@material-ui/styles)*
 
-### `npm test`
+## Требования к визуалу
+- При первичной загрузке необходимо отображать 50 первых пользователей
+- Приложение не должно тормозить даже когда на экране более 1000 пользователей
+- Осуществлять lazy load подгрузку когда скролл приближается к нижней границе
+экрана. Подгрузка осуществляется по 50 пользователей
+- Если имя человека не помещается в границы экрана, обрезаем его многоточием 
+- Кликом на пользователя мы можем выделить его фиолетовым цветом
+- Выполненная работа должна быть визуально приближенной к макету указанному 
+ниже. Поле штрафное время реализовывать не нужно
+- В качестве изображения пользователя необходимо показать шлем с рандомным цветом
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Типы данных
+```typescript
+// Пользователь. Позиция в рейтинговой таблице определяется позицией в 
+// массиве пользователей
+interface User {
+  // Любимый цвет
+  color: string;
+  // Полное имя
+  name: string;
+  // Скорость выполнения заезда
+  speed: number;
+  // Время заезда. Выражено в миллисекундах
+  time: number;
+}
+```
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Макет
+![image](https://user-images.githubusercontent.com/34907325/76761753-d2b26380-67b1-11ea-9e81-c59cce69a67f.png)
