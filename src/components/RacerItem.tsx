@@ -72,6 +72,16 @@ const RacerItem: FC<RacerItemInterface> = ({count, id, name, speed}: RacerItemIn
     return color;
   }, [])
 
+  const getRandomTime = useMemo(() => {
+    const minutes = Math.floor(Math.random() * 60);
+    const seconds = Math.floor(Math.random() * 60);
+    const milliseconds = Math.floor(Math.random() * 1000);
+  
+    const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
+    
+    return formattedTime;
+  }, [])
+
   return (
     <div className={classes.container}>
       <div className={classes.count}>
@@ -85,7 +95,7 @@ const RacerItem: FC<RacerItemInterface> = ({count, id, name, speed}: RacerItemIn
           {name}
         </div>
         <div className={classes.timeSpeed}>
-          <div className={classes.time}>23:54.260</div>
+          <div className={classes.time}>{getRandomTime}</div>
           <div className={classes.hr}>|</div>
           <div className={classes.speed}>{speed} km/h</div>
         </div>

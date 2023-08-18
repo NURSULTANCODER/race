@@ -9,7 +9,7 @@ import { racerInterface } from "types/racesList.Interface";
 
 const useStyles = makeStyles({
   container: {
-    padding: '0 15px'
+    padding: '15px'
   }, 
   loader: {
     display: 'flex', 
