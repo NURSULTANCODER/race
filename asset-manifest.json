@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/race/static/css/main.e6c13ad2.css",
-    "main.js": "/race/static/js/main.f3627d01.js",
+    "main.js": "/race/static/js/main.c0f41155.js",
     "static/js/787.a8f6fc5e.chunk.js": "/race/static/js/787.a8f6fc5e.chunk.js",
     "static/media/helmet.svg": "/race/static/media/helmet.f56e8d5beaa06aaf2507cfac955c6624.svg",
     "index.html": "/race/index.html",
     "main.e6c13ad2.css.map": "/race/static/css/main.e6c13ad2.css.map",
-    "main.f3627d01.js.map": "/race/static/js/main.f3627d01.js.map",
+    "main.c0f41155.js.map": "/race/static/js/main.c0f41155.js.map",
     "787.a8f6fc5e.chunk.js.map": "/race/static/js/787.a8f6fc5e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.f3627d01.js"
+    "static/js/main.c0f41155.js"
   ]
 }
