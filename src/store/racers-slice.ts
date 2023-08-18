@@ -2,7 +2,6 @@ import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { racersStateInterface, racerInterface } from 'types/racesList.Interface'
 import { RootState } from './store'
-import { error } from 'console'
 
 
 const state: racersStateInterface = {
@@ -41,7 +40,7 @@ export const getRaces = () => async (dispatch: Dispatch, getState: () => RootSta
     dispatch(setRaces(res.data.results));
     dispatch(setIsLoading(false))
     dispatch(setCount(count+1))
-  }catch (e) {
+  }catch (error) {
     console.log(error);
     
   }
