@@ -75,8 +75,6 @@ interface RacerItemInterface extends racerInterface {
 
 const Racer: FC<RacerItemInterface> = ({count, id, name, speed, isActive, onChangeActive}: RacerItemInterface) => {
   const classes = useStyles();
-
-  console.log('racer');
   
 
   const getRandomColor = useMemo(() => {
