@@ -1,16 +1,14 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { racersStateInterface, racerInterface } from 'types/racesList.Interface'
+import { RootState } from './store'
+import { error } from 'console'
 
 
 const state: racersStateInterface = {
   count: 1,
   racesList: [],
   isLoading: false,
-  state: {
-    payload: undefined,
-    type: ''
-  }
 }
 
 const racersSlice = createSlice({
@@ -33,16 +31,20 @@ export const { setRaces, setIsLoading, setCount } = racersSlice.actions
 
 export const selectCount = (state: {racersReduser: racersStateInterface}) => state.racersReduser.count;
 
-export const getRaces = () => async (dispatch: (arg0: { payload: any; type: any }) => void, getState: () => { racersReduser: racersStateInterface }) => {
-  const count = selectCount(getState())
-  dispatch(setIsLoading(true))
-  await axios.get(`https://devapi.almurut.com/api/test/racers?page_size=50&page=${count}`).then((res: any) => {
-    console.log(res.data)
+export const getRaces = () => async (dispatch: Dispatch, getState: () => RootState) => {
+  try {
+    const count = selectCount(getState())
+    dispatch(setIsLoading(true))
+
+    const res = await axios.get(`https://devapi.almurut.com/api/test/racers?page_size=50&page=${count}`)
 
     dispatch(setRaces(res.data.results));
-  })
-  dispatch(setIsLoading(false))
-  dispatch(setCount(count+1))
+    dispatch(setIsLoading(false))
+    dispatch(setCount(count+1))
+  }catch (e) {
+    console.log(error);
+    
+  }
 }
 
 export const racersReduser = racersSlice.reducer

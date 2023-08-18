@@ -1,8 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { ReactComponent as Helmet } from 'assest/helmet.svg'
 import { makeStyles } from '@material-ui/styles';
 import { racerInterface } from 'types/racesList.Interface'
-import { JsxElement } from "typescript";
 
 const useStyles = makeStyles({
   container: {
@@ -12,7 +11,7 @@ const useStyles = makeStyles({
     marginBottom: '20px',
     border: '1px solid #0090D1',
     borderRadius: '15px',
-    backgroundColor: '#008fd13a'
+    backgroundColor: '#008fd13a',
   },
   userIcon: {
     width: '30px',
@@ -25,19 +24,19 @@ const useStyles = makeStyles({
   name: {
     fontSize: '18px',
     fontWeight: 'bold',
-    color: '#0F161F'
+    color: '#0F161F',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   time: {
-
+    color: '#0090D1'
   },
   speed: {
-
+    color: '#f20bdb'
   }, 
   hr: {
-    content: '',
-    wigth: '2px',
-    height: '20px',
-    backgroundColor: '#d3d3d3',
+    color: '#0090D1',
     margin: '0 10px', 
   }, 
   count: {
@@ -63,14 +62,14 @@ interface RacerItemInterface extends racerInterface {
 const RacerItem: FC<RacerItemInterface> = ({count, id, name, speed}: RacerItemInterface) => {
   const classes = useStyles();
 
-  function getRandomColor() {
+  const getRandomColor = useMemo(() => {
     const red = Math.floor(Math.random() * 200);     // случайное значение от 0 до 255
     const green = Math.floor(Math.random() * 200);   // случайное значение от 0 до 255
     const blue = Math.floor(Math.random() * 200);    // случайное значение от 0 до 255
   
     const color = `rgb(${red},${green},${blue})`;
     return color;
-  }
+  }, [])
 
   return (
     <div className={classes.container}>
@@ -78,16 +77,16 @@ const RacerItem: FC<RacerItemInterface> = ({count, id, name, speed}: RacerItemIn
         {count + 1}
       </div>
       <div className={classes.Icon}>
-        <Helmet fill={getRandomColor()} className={classes.userIcon} />
+        <Helmet fill={getRandomColor} className={classes.userIcon} />
       </div>
       <div>
         <div className={classes.name}>
-          {name}
+          {name}kjlkjljlkjj;jk;ljl;lk;ldsfkdlfksdlfk;sdf
         </div>
         <div className={classes.timeSpeed}>
-          <div className="time">23:54.260</div>
-          <div className={classes.hr}></div>
-          <div className="speed">{speed} km/h</div>
+          <div className={classes.time}>23:54.260</div>
+          <div className={classes.hr}>|</div>
+          <div className={classes.speed}>{speed} km/h</div>
         </div>
       </div>
     </div>

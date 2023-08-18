@@ -6,7 +6,6 @@ export interface racerInterface {
 }
 
 export interface racersStateInterface {
-  state: { payload: any; type: string; };
   count: number, 
   racesList: racerInterface[],
   isLoading: boolean,
