@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react"
-import RacerItem from 'components/RacerItem'
+import {RacerItem} from 'components/RacerItem'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 import { getRaces } from 'store/racers-slice'
 import CircularProgress from '@mui/material/CircularProgress';
@@ -26,6 +26,7 @@ const RacersList: FC = () => {
   const classes = useStyles();
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [initialLoad, setInitialLoad] = useState(true);
+  const [activeRacer, setActiveRacer] = useState(0)
 
 
 
@@ -56,7 +57,7 @@ const RacersList: FC = () => {
   return (
     <div className={classes.container}>
       {racesList.map((race: racerInterface, index: number) => (
-        <RacerItem key={race.id} count={index} {...race} />
+        <RacerItem key={race.id} count={index} {...race} isActive={race.id === activeRacer} onChangeActive={setActiveRacer} />
       ))}
       {isLoading && (
         <div className={classes.loader}>

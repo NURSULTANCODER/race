@@ -4,6 +4,16 @@ import { makeStyles } from '@material-ui/styles';
 import { racerInterface } from 'types/racesList.Interface'
 
 const useStyles = makeStyles({
+  activeContainer: {
+    padding: '5px 15px',
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '20px',
+    border: '1px solid #f20bdb',
+    borderRadius: '15px',
+    backgroundColor: '#ec0dd643',
+    cursor: 'pointer'
+  },
   container: {
     padding: '5px 15px',
     display: 'flex',
@@ -12,6 +22,7 @@ const useStyles = makeStyles({
     border: '1px solid #0090D1',
     borderRadius: '15px',
     backgroundColor: '#008fd13a',
+    cursor: 'pointer'
   },
   userIcon: {
     width: '30px',
@@ -56,12 +67,17 @@ const useStyles = makeStyles({
 });
 
 interface RacerItemInterface extends racerInterface {
-  count: number
+  count: number,
+  isActive: boolean,
+  onChangeActive: (id: number) => void;
 }
 
 
-const RacerItem: FC<RacerItemInterface> = ({count, id, name, speed}: RacerItemInterface) => {
+const Racer: FC<RacerItemInterface> = ({count, id, name, speed, isActive, onChangeActive}: RacerItemInterface) => {
   const classes = useStyles();
+
+  console.log('racer');
+  
 
   const getRandomColor = useMemo(() => {
     const red = Math.floor(Math.random() * 200);     // случайное значение от 0 до 255
@@ -82,8 +98,12 @@ const RacerItem: FC<RacerItemInterface> = ({count, id, name, speed}: RacerItemIn
     return formattedTime;
   }, [])
 
+  const changeActiveRacer = () => {
+    onChangeActive(id)
+  }
+
   return (
-    <div className={classes.container}>
+    <div className={isActive ? classes.activeContainer : classes.container} onClick={changeActiveRacer}>
       <div className={classes.count}>
         {count + 1}
       </div>
@@ -104,4 +124,4 @@ const RacerItem: FC<RacerItemInterface> = ({count, id, name, speed}: RacerItemIn
   )
 }
 
-export default RacerItem
+export const RacerItem = React.memo(Racer)
