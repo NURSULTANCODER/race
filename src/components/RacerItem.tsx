@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    maxWidth: window.innerWidth - 120 + 'px',
   },
   time: {
     color: '#0090D1'
@@ -81,7 +82,7 @@ const RacerItem: FC<RacerItemInterface> = ({count, id, name, speed}: RacerItemIn
       </div>
       <div>
         <div className={classes.name}>
-          {name}kjlkjljlkjj;jk;ljl;lk;ldsfkdlfksdlfk;sdf
+          {name}
         </div>
         <div className={classes.timeSpeed}>
           <div className={classes.time}>23:54.260</div>
